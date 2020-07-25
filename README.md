@@ -7,10 +7,8 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
   <ol>
     <li>
       <H3>Install LAPS on a Active Directory Domain Controller</H3>
-      <ol>
-        <li>Login to a writeable Active Directory Domain Controller (not an RODC) using a user account that is a member of the "Schema Admins" and "Domain Admins" security groups</li>
-        <li>Download LAPS from the following URL: https://www.microsoft.com/en-us/download/details.aspx?id=46899</li>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
+        <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.PNG" /></p>
       </ol>
     </li>
     <li>
