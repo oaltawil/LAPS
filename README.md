@@ -1,5 +1,8 @@
 # Deploying the Local Administrator Password Solution (LAPS)
-
+<p>
+Membership in the "Schema Admins" and "Domain Admins" security groups are required to configure the Active Directory domain for LAPS.
+To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers. Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
+</p>
 <p>
   <ol>
     <li>
