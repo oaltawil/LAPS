@@ -7,8 +7,9 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
   <ol>
     <li>
       <H3>Install LAPS on a Active Directory Domain Controller</H3>
-        <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
+        <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
         <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.PNG" /></p>
+        </li>
       </ol>
     </li>
     <li>
