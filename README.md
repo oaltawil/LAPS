@@ -10,12 +10,10 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
       <ol>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
         <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
-          <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.PNG" /></p>
+          <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
         </li>
+        <li>On Windows Server Core, using the following installation command: msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX</li>
       </ol>
-      <li>
-      On Windows Server Core, using the following installation command: msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
-      <p>
     </li>
     <li>
       <H3>Prepare the Active Directory domain for LAPS</H3>
@@ -30,12 +28,14 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
           <li>Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)</li>
         </ol>
           <H4>Get-Help .\PrepareADforLAPS.ps1 -Full</H4>
+        </li>
       </ol>
     </li>
     <li><H3>Configure the LAPS Group Policy settings</H3>
       On the same domain controller where LAPS is installed or (if the domain is configured with a Group Policy Central Store) on any member server with the Group Policy Management Tools installed, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
     </li>
     <li><H3>Install the LAPS Client-Side Extension on all managed computers</H3>
-    Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q</li>
+    Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q
+    </li>
   </ol>
 </p>
