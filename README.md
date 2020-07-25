@@ -6,11 +6,16 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
 <p>
   <ol>
     <li>
-      <H3>Install LAPS on a Active Directory Domain Controller</H3>
-        <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
-        <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.PNG" /></p>
+      <H3>Install LAPS on an Active Directory Domain Controller</H3>
+      <ol>
+        <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
+        <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
+          <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.PNG" /></p>
         </li>
       </ol>
+      <li>
+      On Windows Server Core, using the following installation command: msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
+      <p>
     </li>
     <li>
       <H3>Prepare the Active Directory domain for LAPS</H3>
