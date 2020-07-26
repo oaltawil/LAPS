@@ -11,7 +11,8 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     <li> PowerShell module</li>
     <li> GPO Editor templates</li>
   </ol>
-  Please note that by default only the "AdmPwd GPO extension" is installed.
+  <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
+  Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
 </p>
 <p>
   <ol>
@@ -21,7 +22,6 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
         <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
           <p><img alt="Image" title="LAPS Product Features" src="LAPSInstallAllProductFeatures.png" /></p>
-          <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
         </li>
         <li>On Windows Server Core, using the following installation command:
           <p>"msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</p>
