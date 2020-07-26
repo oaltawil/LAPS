@@ -61,8 +61,8 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     </li>
     <li>The Active Directory Users and Computers console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
     <ol>
-      <li>View Advanced Features</li>
-      <li>Right-click the Computer object and select Properties</li>
+      <li>Click on the "View" menu and select "Advanced Features"</li>
+      <li>Right-click the Computer object and select "Properties"</li>
       <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
       <p><img alt="Image" title="LAPS FAT Client UI Feature" src="ADUsersComputersAttributeEditor.png" /></p>
       </li>
