@@ -30,7 +30,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
       <H3>Prepare the Active Directory domain for LAPS</H3>
       <ol>
         <li>Schedule a Maintenance Window</li>
-        <li>Take a System State Backup or a BareMetal Backup of the Domain Controller. Alternatively you could backup the Active Directory NTDS database using ntdsutil.exe</li>
+        <li>Take a System State Backup of the Domain Controller</li>
         <li>Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
         <ol>
           <li>Extend the Active Directory schema</li>
@@ -38,7 +38,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
           <li>Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory</li>
           <li>Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)</li>
         </ol>
-          <H4>Get-Help .\Configure-ADDomain.ps1 -Full</H4>
+        Type the following command to obtain more information about running the script: <H4>Get-Help .\Configure-ADDomain.ps1 -Full</H4>
         </li>
       </ol>
     </li>
