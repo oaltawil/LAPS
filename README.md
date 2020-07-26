@@ -60,33 +60,34 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     </li>
   </ol>
 </p>
-<p>
-  <H2>Retrieving the local Administrator password for a given Computer</H2>
+<H2>Retrieving the local Administrator password for a given Computer</H2>
   <p> 
     Your user account or a group that you are a member of must have been specified as one of the "AllowedPrincipals" when running the "Configure-ADDomain.ps1" PowerShell script. Otherwise, you won't have the security permissions required to view and reset local Administrator passwords.  There are three methods that you can use to retrieve the local Admistrator Password:
   </p>
-  <ol>
-    <li><H3>LAPS Fat Client UI</H3>
-      The "LAPS UI" application can be used to read and reset local Administrator passwords:
-      <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
-    </li>
-    <li><H3>LAPS PowerShell Module</H3>
-      The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
-      <p>Get-AdmPwdPassword "myServer"</p>
-      <p>Reset-AdmPwdPassword "myServer"</p>
-      <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
-      Type the following command to obtain all the cmdlets available in the LAPS PowerShell module:
-      <p>Get-Command -Module AdmPwd.PS</p>
-    </li>
-    <li><H3>Active Directory Users and Computers Snap-In Console</H3>
-      <ol>
-        <li>Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation</li>
-        <li>Launch the "Active Directory Users and Computers" snap-in console</li>
-        <li>Click on the "View" menu and select "Advanced Features"</li>
-        <li>Right-click the Computer object and select "Properties"</li>
-        <li>Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute</li>
-      </ol>
-      <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
-    </li>
-  </ol>
+  <p>
+    <ol>
+      <li><H3>LAPS Fat Client UI</H3>
+        The "LAPS UI" application can be used to read and reset local Administrator passwords:
+        <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
+      </li>
+      <li><H3>LAPS PowerShell Module</H3>
+        The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
+        <p>Get-AdmPwdPassword "myServer"</p>
+        <p>Reset-AdmPwdPassword "myServer"</p>
+        <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
+        Type the following command to obtain all the cmdlets available in the LAPS PowerShell module:
+        <p>Get-Command -Module AdmPwd.PS</p>
+      </li>
+      <li><H3>Active Directory Users and Computers Snap-In Console</H3>
+        <ol>
+          <li>Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation</li>
+          <li>Launch the "Active Directory Users and Computers" snap-in console</li>
+          <li>Click on the "View" menu and select "Advanced Features"</li>
+          <li>Right-click the Computer object and select "Properties"</li>
+          <li>Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute</li>
+        </ol>
+        <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
+      </li>
+    </ol>
+  </p>
 </p>
