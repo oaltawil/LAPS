@@ -7,9 +7,9 @@
   Download the "LAPS.x64.msi" Windows Installer package from [link to LAPS Download Page!](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
 
   1. AdmPwd GPO Extension
-  1. Management Tools\Fat Client UI
-  1. Management Tools\PowerShell module
-  1. Management Tools\GPO Editor templates
+  2. Management Tools\Fat Client UI
+  3. Management Tools\PowerShell module
+  4. Management Tools\GPO Editor templates
 
   ![LAPS Product Features](/images/LAPSProductFeatures.png)
   
@@ -17,37 +17,45 @@
 
 ### 1. Install LAPS on an Active Directory Domain Controller
 
-  1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
-  1. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
+  1.1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
+  
+  1.2. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
 
   ![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
   
-  1. On Windows Server Core, using the following installation command: 
+  1.3. On Windows Server Core, using the following installation command:
     msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
-### 1. Prepare the Active Directory domain for LAPS
+### 2. Prepare the Active Directory domain for LAPS
 
-  1.Schedule a Maintenance Window
-  1.Take a System State Backup of the Domain Controller
-  1.Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
-    1.Extend the Active Directory schema
-    1.Grant Computers the ability to store the local Administrator password in Active Directory
-    1.Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
-    1.Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
+  2.1.Schedule a Maintenance Window
+  
+  2.2.Take a System State Backup of the Domain Controller
+  
+  2.3.Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
+  
+    2.3.1.Extend the Active Directory schema
+    2.3.2.Grant Computers the ability to store the local Administrator password in Active Directory
+    2.3.3.Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
+    2.3.4.Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
     Type the following command to obtain more information about running the script:
 
 #### Get-Help .\Configure-ADDomain.ps1 -Full</p>
 
-### 1. Configure the LAPS Group Policy settings
+### 3. Configure the LAPS Group Policy settings
 
-  1.If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled
-  1.If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed
-  1.Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
-  1.In the "Group Policy Management Editor", enable the following Group Policy setting: 
+  3.1. If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled
+  
+  3.2. If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed
+  
+  3.3. Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
+  
+  3.4. In the "Group Policy Management Editor", enable the following Group Policy setting:
     "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"
-  1.Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script
+  
+  3.5. Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script
 
-### 1. Install the LAPS Client-Side Extension on all managed computers
+### 4. Install the LAPS Client-Side Extension on all managed computers
 
   Use any Electronic Software Distribution method, such as Group Policy Software Installation or Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package on all computers: "msiexec.exe /i LAPS.x64.msi /q"
 
@@ -61,7 +69,7 @@
 
   ![LAPS FAT Client](/images/LAPSFatClient.png)
 
-### 1. LAPS PowerShell Module
+### 2. LAPS PowerShell Module
 
   The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
 
@@ -74,12 +82,16 @@
 
   Get-Command -Module AdmPwd.PS
 
-### 1. Active Directory Users and Computers Snap-In Console
+### 3. Active Directory Users and Computers Snap-In Console
 
-  1.Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation
-  1.Launch the "Active Directory Users and Computers" snap-in console
-  1.Click on the "View" menu and select "Advanced Features"
-  1.Right-click the Computer object and select "Properties"
-  1.Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute
+  3.1. Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation
+  
+  3.2. Launch the "Active Directory Users and Computers" snap-in console
+  
+  3.3. Click on the "View" menu and select "Advanced Features"
+  
+  3.4. Right-click the Computer object and select "Properties"
+  
+  3.5. Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute
   
   ![Active Directory Users and Computers Attribute Editor](/images/ADUsersComputersAttributeEditor.png)
