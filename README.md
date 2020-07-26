@@ -43,7 +43,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
       </ol>
     </li>
     <li><H3>Configure the LAPS Group Policy settings</H3>
-      On the same domain controller where LAPS is installed or, if the domain is configured with a Group Policy Central Store, on any member server with the Group Policy Management Tools installed, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
+      On the same domain controller where LAPS is installed, or if the domain is configured with a Group Policy Central Store, on any domain-joined server or workstation with the Remote Server Administration Tools Group Policy Management Tools feature enabled, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
     </li>
     <li><H3>Install the LAPS Client-Side Extension on all managed computers</H3>
     Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q
@@ -54,8 +54,10 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
   <H2>Retrieving the local Administrator password for a given Computer</H2>
   Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.
   <ol>
-    <li>The LAPS Fat Client can be installed on any domain-joined server or workstation
+    <li>The LAPS Fat Client can be installed on any domain-joined server or workstation:
     <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
+    Once installed, the "LAPS UI" Fat Client application can be used to read and reset passwords:
+    <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
     <li>The Active Directory Users and Computers console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
     <ol>
@@ -68,4 +70,3 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     </li>
   </ol>
 </p>
-      
