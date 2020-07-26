@@ -19,11 +19,13 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
       <H3>Install LAPS on an Active Directory Domain Controller</H3>
       <ol>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
-        <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
+        <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
           <p><img alt="Image" title="LAPS Product Features" src="LAPSInstallAllProductFeatures.png" /></p>
           <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
         </li>
-        <li>On Windows Server Core, using the following installation command: "msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</li>
+        <li>On Windows Server Core, using the following installation command:
+          <p>"msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</p>
+        </li>
       </ol>
     </li>
     <li>
