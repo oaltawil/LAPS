@@ -24,6 +24,7 @@
   ![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
   
   1.3. On Windows Server Core, using the following installation command:
+
     msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
 ### 2. Prepare the Active Directory domain for LAPS
