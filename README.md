@@ -60,14 +60,16 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
     <li>The Active Directory Users and Computers snap-in console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
-    <ol>
-      <li>Launch the Active Directory Users and Computers snap-in console"</li>
-      <li>Click on the "View" menu and select "Advanced Features"</li>
-      <li>Right-click the Computer object and select "Properties"</li>
-      <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
-      <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
-      </li>
-    </ol>
+      <p>
+        <ol>
+          <li>Launch the Active Directory Users and Computers snap-in console"</li>
+          <li>Click on the "View" menu and select "Advanced Features"</li>
+          <li>Right-click the Computer object and select "Properties"</li>
+          <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
+          <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
+          </li>
+        </ol>
+      </p>
     </li>
   </ol>
 </p>
