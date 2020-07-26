@@ -1,6 +1,6 @@
 <H2>Deploying the Local Administrator Password Solution (LAPS)</H2>
 <p>
-Membership in the "Schema Admins" and "Domain Admins" security groups are required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
+Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the "Configure-ADDomain.ps1" PowerShell script).
 </p>
 <p>
   Download the "LAPS.x64.msi" Windows Installer package from https://www.microsoft.com/en-us/download/details.aspx?id=46899.  
@@ -48,8 +48,10 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     <ol>
       <li>If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled</li>
       <li>If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed</li>
-      <li>Using the "Group Policy Management Console", create a new Group Policy Object or edit an existing one</li>
-      <li>The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"</li>
+      <li>Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one</li>
+      <li>In the "Group Policy Management Editor", enable the following Group Policy setting: 
+        <p>"Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"</p>
+      </li>
       <li>Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script</li>
     </ol>
     </li>
@@ -60,19 +62,19 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
 </p>
 <p>
   <H2>Retrieving the local Administrator password for a given Computer</H2>
-  <p>
-    Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.
-    There are three methods that you can use to retrieve the local Admistrator Password:
+  <p> 
+    Your user account or a group that you are a member of must have been specified as one of the "AllowedPrincipals" when running the "Configure-ADDomain.ps1" PowerShell script. Otherwise, you won't have the security permissions required to view and reset local Administrator passwords.  There are three methods that you can use to retrieve the local Admistrator Password:
   </p>
   <ol>
     <li><H3>LAPS Fat Client UI</H3>
-      The "LAPS UI" application can be used to read and reset passwords:
+      The "LAPS UI" application can be used to read and reset local Administrator passwords:
       <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
     <li><H3>LAPS PowerShell Module</H3>
-      The following cmdlets in the LAPS PowerShell module can be used to read and reset passwords:
-      <p>Get-AdmPwdPassword -ComputerName <ComputerName></p>
-      <p>Reset-AdmPwdPassword -ComputerName <ComputerName></p>
+      The following cmdlets in the LAPS PowerShell module can be used to read and reset local Administrator passwords:
+      <p>Get-AdmPwdPassword -ComputerName "ComputerName"</p>
+      <p>Reset-AdmPwdPassword -ComputerName "ComputerName"</p>
+      <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
     </li>
     <li><H3>Active Directory Users and Computers Snap-In Console</H3>
       <ol>
