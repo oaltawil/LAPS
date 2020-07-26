@@ -63,7 +63,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     There are three methods that you can use to retrieve the local Admistrator Password:
   </p>
   <ol>
-    <li>LAPS UI Fat Client 
+    <li><H3>LAPS Fat Client UI</H3>
       <ol>
         <li>The "LAPS UI" fat client application can be installed on any domain-joined server or workstation:
           <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
@@ -73,7 +73,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
         </li>
       </ol>
     </li>
-    <li>LAPS PowerShell Module
+    <li><H3>LAPS PowerShell Module</H3>
       <ol>
         <li>The LAPS PowerShell Module can be installed on any domain-joined server or workstation:
           <p><img alt="Image" title="LAPS PowerShell Module" src="LAPSPowerShellModule.png" /></p>
@@ -84,7 +84,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
         </li>
       </ol>
     </li>
-    <li>Active Directory Users and Computers Snap-In Console
+    <li><H3>Active Directory Users and Computers Snap-In Console</H3>
       <ol>
         <li>Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation</li>
         <li>Launch the "Active Directory Users and Computers" snap-in console</li>
