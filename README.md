@@ -38,7 +38,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
           <li>Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory</li>
           <li>Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)</li>
         </ol>
-        Type the following command to obtain more information about running the script: <H4>Get-Help .\Configure-ADDomain.ps1 -Full</H4>
+        <p>Type the following command to obtain more information about running the script: <H4>Get-Help .\Configure-ADDomain.ps1 -Full</H4></p>
         </li>
       </ol>
     </li>
