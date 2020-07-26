@@ -52,19 +52,20 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
 </p>
 <p>
   <H2>Retrieving the local Administrator password for a given Computer</H2>
-  Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.
+  <p>Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.</p>
   <ol>
-    <li>The LAPS Fat Client can be installed on any domain-joined server or workstation:
+    <li>The LAPS UI Fat Client can be installed on any domain-joined server or workstation:
     <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
-    Once installed, the "LAPS UI" Fat Client application can be used to read and reset passwords:
+    Once installed, the "LAPS UI" application can be used to read and reset passwords:
     <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
-    <li>The Active Directory Users and Computers console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
+    <li>The Active Directory Users and Computers snap-in console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
     <ol>
+      <li>Launch the Active Directory Users and Computers snap-in console"</li>
       <li>Click on the "View" menu and select "Advanced Features"</li>
       <li>Right-click the Computer object and select "Properties"</li>
       <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
-      <p><img alt="Image" title="LAPS FAT Client UI Feature" src="ADUsersComputersAttributeEditor.png" /></p>
+      <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
       </li>
     </ol>
     </li>
