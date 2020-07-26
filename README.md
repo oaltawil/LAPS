@@ -63,7 +63,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     <ol>
       <li>View Advanced Features</li>
       <li>Right-click the Computer object and select Properties</li>
-      <li>Click on the "Attributes Editor" tab, and read the value for the "Ms-Mcs-LocalAdmPwd" attribute
+      <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
       <p><img alt="Image" title="LAPS FAT Client UI Feature" src="ADUsersComputersAttributeEditor.png" /></p>
       </li>
     </ol>
