@@ -25,7 +25,7 @@
 
 1.3. On Windows Server Core, using the following installation command:
 
-  msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
+    msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
 ### 2. Prepare the Active Directory domain for LAPS
 
@@ -37,17 +37,17 @@
 
 2.3.1. Extend the Active Directory schema by running the following cmdlet:
 
-  **Update-AdmPwd*ADSchema***
+Update-AdmPwd*ADSchema*
 
 2.3.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
 
-  **Set-AdmPwd*ComputerSelf*Permission** -OrgUnit "Names of the OUs to delegate permissions"
+Set-AdmPwd*ComputerSelfPermission* -OrgUnit "Names of the OUs to delegate permissions"
 
 2.3.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
-  **Set-AdmPwd*ReadPassword*Permission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+Set-AdmPwd*ReadPasswordPermission* -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
-  **Set-AdmPwd*ResetPassword*Permission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+Set-AdmPwd*ResetPasswordPermission* -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
 2.3.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
