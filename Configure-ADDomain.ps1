@@ -72,5 +72,5 @@ if (Test-Path $GroupPolicyCentralStore)
 Write-Host "`n`nCopying the LAPS Administrative Template files to the Group Policy Central store"
 
     Copy-Item -Path "C:\Windows\PolicyDefinitions\AdmPwd.admx" -Destination (Join-Path -Path $GroupPolicyCentralStore -ChildPath "AdmPwd.admx") -Force -Verbose
-    Copy-Item -Path "C:\Windows\PolicyDefinitions\en-US\AdmPwd.adml" -Destination (Join-Path -Path $GroupPolicyCentralStore -ChildPath "en-US" -AdditionalChildPath "AdmPwd.adml") -Force -Verbose
+    Copy-Item -Path "C:\Windows\PolicyDefinitions\en-US\AdmPwd.adml" -Destination (Join-Path -Path (Join-Path -Path $GroupPolicyCentralStore -ChildPath "en-US") -ChildPath "AdmPwd.adml") -Force -Verbose
 }
