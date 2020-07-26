@@ -56,7 +56,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     </ol>
     </li>
     <li><H3>Install the LAPS Client-Side Extension on all managed computers</H3>
-    Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q
+    Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: "msiexec.exe /i LAPS.x64.msi /q"
     </li>
   </ol>
 </p>
@@ -72,8 +72,8 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     </li>
     <li><H3>LAPS PowerShell Module</H3>
       The following cmdlets in the LAPS PowerShell module can be used to read and reset local Administrator passwords:
-      <p>Get-AdmPwdPassword -ComputerName "myServer"</p>
-      <p>Reset-AdmPwdPassword -ComputerName "myServer"</p>
+      <p>Get-AdmPwdPassword "myServer"</p>
+      <p>Reset-AdmPwdPassword "myServer"</p>
       <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
     </li>
     <li><H3>Active Directory Users and Computers Snap-In Console</H3>
