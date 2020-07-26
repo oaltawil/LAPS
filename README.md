@@ -35,11 +35,19 @@
   
   2.3. Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
   
-    a. Extend the Active Directory schema
+    a. Extend the Active Directory schema by running the following cmdlet:
     
-    b. Grant Computers the ability to store the local Administrator password in Active Directory
+      Update-AdmPwdADSchema
+
+    b. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the "Set-AdmPwdComputerSelfPermission" cmdlet:
+      
+      Set-AdmPwdComputerSelfPermission -OrgUnit <Names of the OUs to delegate permissions>
     
-    c. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
+    c. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the "Set-AdmPwdReadPasswordPermission" and "Set-AdmPwdResetPasswordPermission" cmdlets, respectively:
+
+      Set-AdmPwdReadPasswordPermission -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
+
+      Set-AdmPwdResetPasswordPermission -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
     
     d. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
