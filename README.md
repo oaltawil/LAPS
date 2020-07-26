@@ -67,7 +67,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
   <ol>
     <li><H3>LAPS Fat Client UI</H3>
       <ol>
-        <li>The "LAPS UI" fat client application can be installed on any domain-joined server or workstation:
+        <li>The "LAPS Fat Client UI" can be installed on any domain-joined server or workstation:
           <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
         </li>
         <li>Once installed, the "LAPS UI" application can be used to read and reset passwords:
