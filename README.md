@@ -34,11 +34,15 @@
   
   2.3.Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
   
-    2.3.1.Extend the Active Directory schema
-    2.3.2.Grant Computers the ability to store the local Administrator password in Active Directory
-    2.3.3.Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
-    2.3.4.Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
-    Type the following command to obtain more information about running the script:
+    a. Extend the Active Directory schema
+    
+    b. Grant Computers the ability to store the local Administrator password in Active Directory
+    
+    c. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
+    
+    d. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
+
+  Type the following command to obtain more information about running the script:
 
 #### Get-Help .\Configure-ADDomain.ps1 -Full</p>
 
