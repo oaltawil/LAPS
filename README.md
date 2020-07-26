@@ -35,23 +35,23 @@
   
   2.3. Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
   
-    a. Extend the Active Directory schema by running the following cmdlet:
+    2.3.1. Extend the Active Directory schema by running the following cmdlet:
     
-      Update-AdmPwdADSchema
+      *Update-AdmPwd**ADSchema*
 
-    b. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the "Set-AdmPwdComputerSelfPermission" cmdlet:
+    2.3.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
       
-      Set-AdmPwdComputerSelfPermission -OrgUnit <Names of the OUs to delegate permissions>
+      *Set-AdmPwd**ComputerSelf**Permission* -OrgUnit <Names of the OUs to delegate permissions>
     
-    c. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the "Set-AdmPwdReadPasswordPermission" and "Set-AdmPwdResetPasswordPermission" cmdlets, respectively:
+    2.3.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
-      Set-AdmPwdReadPasswordPermission -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
+      *Set-AdmPwd**ReadPassword**Permission* -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
 
-      Set-AdmPwdResetPasswordPermission -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
+      *Set-AdmPwd**ResetPassword**Permission* -OrgUnit <Names of the OUs to delegate permissions> -AllowedPrincipals <Users and/or Groups>
     
-    d. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
+    2.3.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
-  Type the following command to obtain more information about running the script:
+  Type the following command to obtain more information about how to run the script:
 
 #### Get-Help .\Configure-ADDomain.ps1 -Full</p>
 
