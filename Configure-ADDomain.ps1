@@ -37,6 +37,13 @@ param (
 # On a Domain Controller #
 ##########################
 
+if (-not (Get-Module -ListAvailable | Where-Object {$_.Name -match "AdmPwd.PS"})) 
+{
+    Write-Host "`nThe LAPS AdmPwd.PS PowerShell module could not be found."
+    Write-Host "`nPlease install the LAPS PowerShell module and try again"
+    Exit
+}
+
 # Load the LAPS module
 Import-Module AdmPwd.PS
 
