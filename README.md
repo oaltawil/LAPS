@@ -65,7 +65,7 @@ Type the following command for help with running the script:
 
 3.4. In the "Group Policy Management Editor", enable the following Group Policy setting:
   
-    "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"
+    Computer Configuration\Policies\Administrative Templates\LAPS\Enable local admin password management
 
 3.5. Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script
 
