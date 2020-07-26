@@ -1,4 +1,4 @@
-# Deploying the Local Administrator Password Solution (LAPS)
+<H2>Deploying the Local Administrator Password Solution (LAPS)</H2>
 <p>
 Membership in the "Schema Admins" and "Domain Admins" security groups are required to configure the Active Directory domain for LAPS.
 To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers. Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
@@ -27,15 +27,31 @@ To avoid pash-the-hash attacks, members of priviliged Active Directory groups, s
           <li>Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory</li>
           <li>Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)</li>
         </ol>
-          <H4>Get-Help .\PrepareADforLAPS.ps1 -Full</H4>
+          <H4>Get-Help .\Configure-ADDomain.ps1 -Full</H4>
         </li>
       </ol>
     </li>
     <li><H3>Configure the LAPS Group Policy settings</H3>
-      On the same domain controller where LAPS is installed or (if the domain is configured with a Group Policy Central Store) on any member server with the Group Policy Management Tools installed, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
+      On the same domain controller where LAPS is installed or, if the domain is configured with a Group Policy Central Store, on any member server with the Group Policy Management Tools installed, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
     </li>
     <li><H3>Install the LAPS Client-Side Extension on all managed computers</H3>
     Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q
     </li>
   </ol>
 </p>
+<p>
+  <H2>Retrieving the local Administrator password for a given Computer</H2>
+  Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.
+  <ol>
+    <li>The LAPS Fat Client can be installed on any domain-joined server or workstation
+    <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFATClientUIFeature.png" /></p>
+    </li>
+    <li>The Active Directory Users and Computers MMC (installed as part of the Remote Server Administration Tools for Active Directory Domain Services feature) can also be enabled on any domain-joined server or workstation.
+    <ol>
+      <li>View Advanced Features</li>
+      <li>Right-click the Computer object and select Properties</li>
+      <li>Click on the "Attributes Editor" tab, and read the value for the "Ms-Mcs-LocalAdmPwd" attribute</li>
+    </ol>
+  </ol>
+</p>
+      
