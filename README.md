@@ -66,25 +66,13 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
   </p>
   <ol>
     <li><H3>LAPS Fat Client UI</H3>
-      <ol>
-        <li>The "LAPS Fat Client UI" can be installed on any domain-joined server or workstation:
-          <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
-        </li>
-        <li>Once installed, the "LAPS UI" application can be used to read and reset passwords:
-          <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
-        </li>
-      </ol>
+      The "LAPS UI" application can be used to read and reset passwords:
+      <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
     <li><H3>LAPS PowerShell Module</H3>
-      <ol>
-        <li>The LAPS PowerShell Module can be installed on any domain-joined server or workstation:
-          <p><img alt="Image" title="LAPS PowerShell Module" src="LAPSPowerShellModule.png" /></p>
-        </li>
-        <li>Once installed, the cmdlets in the LAPS PowerShell module can be used to read and reset passwords:
-          <p>Get-AdmPwdPassword -ComputerName CLIENT-32</p>
-          <p>Reset-AdmPwdPassword -ComputerName CLIENT-32</p>
-        </li>
-      </ol>
+      The following cmdlets in the LAPS PowerShell module can be used to read and reset passwords:
+      <p>Get-AdmPwdPassword -ComputerName <ComputerName></p>
+      <p>Reset-AdmPwdPassword -ComputerName <ComputerName></p>
     </li>
     <li><H3>Active Directory Users and Computers Snap-In Console</H3>
       <ol>
@@ -92,10 +80,9 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
         <li>Launch the "Active Directory Users and Computers" snap-in console</li>
         <li>Click on the "View" menu and select "Advanced Features"</li>
         <li>Right-click the Computer object and select "Properties"</li>
-        <li>Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute:
-          <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
-        </li>
+        <li>Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute</li>
       </ol>
+      <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
     </li>
   </ol>
 </p>
