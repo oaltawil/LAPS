@@ -40,9 +40,6 @@ param (
 # Load the LAPS module
 Import-Module AdmPwd.PS
 
-# Import the Active Directory module
-Import-Module ActiveDirectory
-
 <# Extend the AD Schema by adding two new attributes to the computer class: 
  1. ms-Mcs-AdmPwd – Stores the password in clear text
  2. ms-Mcs-AdmPwdExpirationTime – Stores the time to reset the password
@@ -60,7 +57,7 @@ Write-Host "`n`nGranting specific users and groups the ability to reset the loca
 $OrgUnits | ForEach-Object {Set-AdmPwdResetPasswordPermission -OrgUnit $_ -AllowedPrincipals $AllowedPrincipals -Verbose}
 
 # Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)
-$ADDomain = (Get-ADDomain).DNSRoot
+$ADDomain = (wmic computersystem get domain)[2].Trim()
 $GroupPolicyCentralStore = "\\$ADDomain\SYSVOL\$ADDomain\Policies\PolicyDefinitions"
 
 if (Test-Path $GroupPolicyCentralStore)
