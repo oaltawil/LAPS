@@ -1,0 +1,93 @@
+##Deploying the Local Administrator Password Solution (LAPS)
+<p>
+Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the "Configure-ADDomain.ps1" PowerShell script).
+</p>
+<p>
+  Download the "LAPS.x64.msi" Windows Installer package from https://www.microsoft.com/en-us/download/details.aspx?id=46899.  
+  The LAPS installer consists of the following 4 components or features:
+  
+    1. AdmPwd GPO Extension
+    1. Management Tools\Fat Client UI
+    1. Management Tools\PowerShell module
+    1. Management Tools\GPO Editor templates
+  
+  <p><img alt="Image" title="LAPS Product Features" src="Img\LAPSProductFeatures.png" /></p>
+  Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
+</p>
+<p>
+  
+    1.
+      <H3>Install LAPS on an Active Directory Domain Controller
+      
+        1.Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
+        1.On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
+          <p><img alt="Image" title="LAPS Product Features" src="Img\LAPSInstallAllProductFeatures.png" /></p>
+        
+        1.On Windows Server Core, using the following installation command:
+          <p>"msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</p>
+        
+      
+    
+    1.
+      <H3>Prepare the Active Directory domain for LAPS
+      
+        1.Schedule a Maintenance Window
+        1.Take a System State Backup of the Domain Controller
+        1.Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
+        
+          1.Extend the Active Directory schema
+          1.Grant Computers the ability to store the local Administrator password in Active Directory
+          1.Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory
+          1.Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)
+        
+        <p>Type the following command to obtain more information about running the script: ####Get-Help .\Configure-ADDomain.ps1 -Full</p>
+        
+      
+    
+    1.<H3>Configure the LAPS Group Policy settings
+    
+      1.If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled
+      1.If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed
+      1.Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
+      1.In the "Group Policy Management Editor", enable the following Group Policy setting: 
+        <p>"Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"</p>
+      
+      1.Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script
+    
+    
+    1.<H3>Install the LAPS Client-Side Extension on all managed computers
+    Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: "msiexec.exe /i LAPS.x64.msi /q"
+    
+  
+</p>
+##Retrieving the local Administrator password for a given Computer
+  <p> 
+    Your user account or a group that you are a member of must have been specified as one of the "AllowedPrincipals" when running the "Configure-ADDomain.ps1" PowerShell script. Otherwise, you won't have the security permissions required to view and reset local Administrator passwords.  There are three methods that you can use to retrieve the local Admistrator Password:
+  </p>
+  <p>
+    
+      1.<H3>LAPS Fat Client UI
+        The "LAPS UI" application can be used to read and reset local Administrator passwords:
+        <p><img alt="Image" title="LAPS FAT Client" src="Img\LAPSFatClient.png" /></p>
+      
+      1.<H3>LAPS PowerShell Module
+        The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
+        <p>Get-AdmPwdPassword "myServer"</p>
+        <p>Reset-AdmPwdPassword "myServer"</p>
+        <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="Img\LAPSPowerShellCmdlets.png" /></p>
+        Type the following command to obtain all the cmdlets available in the LAPS PowerShell module:
+        <p>Get-Command -Module AdmPwd.PS</p>
+      
+      1.<H3>Active Directory Users and Computers Snap-In Console
+        
+          1.Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation
+          1.Launch the "Active Directory Users and Computers" snap-in console
+          1.Click on the "View" menu and select "Advanced Features"
+          1.Right-click the Computer object and select "Properties"
+          1.Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute
+        
+        <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="Img\ADUsersComputersAttributeEditor.png" /></p>
+      
+    
+  </p>
+</p>
