@@ -11,7 +11,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     <li> Management Tools\PowerShell module</li>
     <li> Management Tools\GPO Editor templates</li>
   </ol>
-  <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
+  <p><img alt="Image" title="LAPS Product Features" src="Img\LAPSProductFeatures.png" /></p>
   Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
 </p>
 <p>
@@ -21,7 +21,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
       <ol>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
         <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
-          <p><img alt="Image" title="LAPS Product Features" src="LAPSInstallAllProductFeatures.png" /></p>
+          <p><img alt="Image" title="LAPS Product Features" src="Img\LAPSInstallAllProductFeatures.png" /></p>
         </li>
         <li>On Windows Server Core, using the following installation command:
           <p>"msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</p>
@@ -68,13 +68,13 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
     <ol>
       <li><H3>LAPS Fat Client UI</H3>
         The "LAPS UI" application can be used to read and reset local Administrator passwords:
-        <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
+        <p><img alt="Image" title="LAPS FAT Client" src="Img\LAPSFatClient.png" /></p>
       </li>
       <li><H3>LAPS PowerShell Module</H3>
         The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
         <p>Get-AdmPwdPassword "myServer"</p>
         <p>Reset-AdmPwdPassword "myServer"</p>
-        <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
+        <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="Img\LAPSPowerShellCmdlets.png" /></p>
         Type the following command to obtain all the cmdlets available in the LAPS PowerShell module:
         <p>Get-Command -Module AdmPwd.PS</p>
       </li>
@@ -86,7 +86,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
           <li>Right-click the Computer object and select "Properties"</li>
           <li>Click on the "Attributes Editor" tab and read the value for the "ms-Mcs-AdmPwd" attribute</li>
         </ol>
-        <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="ADUsersComputersAttributeEditor.png" /></p>
+        <p><img alt="Image" title="Active Directory Users and Computers Attribute Editor" src="Img\ADUsersComputersAttributeEditor.png" /></p>
       </li>
     </ol>
   </p>
