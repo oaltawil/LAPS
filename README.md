@@ -1,10 +1,10 @@
 <H2>Deploying the Local Administrator Password Solution (LAPS)</H2>
 <p>
-Membership in the "Schema Admins" and "Domain Admins" security groups are required to configure the Active Directory domain for LAPS.
-To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers. Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
+Membership in the "Schema Admins" and "Domain Admins" security groups are required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
 </p>
 <p>
-The LAPS installer consists of the following 4 components or features:
+  Download the "LAPS.x64.msi" Windows Installer package from https://www.microsoft.com/en-us/download/details.aspx?id=46899.  
+  The LAPS installer consists of the following 4 components or features:
   <ol>
     <li> AdmPwd GPO Extension</li>
     <li> Fat Client UI</li>
