@@ -4,12 +4,23 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
 To avoid pash-the-hash attacks, members of priviliged Active Directory groups, such as "Schema Admins" and "Domain Admins", should only logon to domain controllers and not to down-level member servers. Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the script).
 </p>
 <p>
+The LAPS installer consists of the following 4 components or features:
+  <ol>
+    <li> AdmPwd GPO Extension</li>
+    <li> Fat Client UI</li>
+    <li> PowerShell module</li>
+    <li> GPO Editor templates</li>
+    Please note that by default only the "AdmPwd GPO extension" is installed.
+  </ol>
+</p>
+<p>
   <ol>
     <li>
       <H3>Install LAPS on an Active Directory Domain Controller</H3>
       <ol>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
         <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
+          <p><img alt="Image" title="LAPS Product Features" src="LAPSInstallAllProductFeatures.png" /></p>
           <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
         </li>
         <li>On Windows Server Core, using the following installation command: msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX</li>
