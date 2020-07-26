@@ -33,7 +33,7 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
         <li>Take a System State Backup or a BareMetal Backup of the Domain Controller. Alternatively you could backup the Active Directory NTDS database using ntdsutil.exe</li>
         <li>Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
         <ol>
-          <li>Extend the Active Directory Schema</li>
+          <li>Extend the Active Directory schema</li>
           <li>Grant Computers the ability to store the local Administrator password in Active Directory</li>
           <li>Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory</li>
           <li>Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)</li>
@@ -57,12 +57,15 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
     <li>The LAPS Fat Client can be installed on any domain-joined server or workstation
     <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
     </li>
-    <li>The Active Directory Users and Computers MMC (installed as part of the Remote Server Administration Tools for Active Directory Domain Services feature) can also be enabled on any domain-joined server or workstation.
+    <li>The Active Directory Users and Computers console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
     <ol>
       <li>View Advanced Features</li>
       <li>Right-click the Computer object and select Properties</li>
-      <li>Click on the "Attributes Editor" tab, and read the value for the "Ms-Mcs-LocalAdmPwd" attribute</li>
+      <li>Click on the "Attributes Editor" tab, and read the value for the "Ms-Mcs-LocalAdmPwd" attribute
+      <p><img alt="Image" title="LAPS FAT Client UI Feature" src="ADUsersComputersAttributeEditor.png" /></p>
+      </li>
     </ol>
+    </li>
   </ol>
 </p>
       
