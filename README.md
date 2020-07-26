@@ -71,10 +71,12 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
       <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
     <li><H3>LAPS PowerShell Module</H3>
-      The following cmdlets in the LAPS PowerShell module can be used to read and reset local Administrator passwords:
+      The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
       <p>Get-AdmPwdPassword "myServer"</p>
       <p>Reset-AdmPwdPassword "myServer"</p>
       <p><img alt="Image" title="LAPS PowerShell Cmdlets" src="LAPSPowerShellCmdlets.png" /></p>
+      Type the following command to obtain all the cmdlets available in the LAPS PowerShell module:
+      <p>Get-Command -Module AdmPwd.PS</p>
     </li>
     <li><H3>Active Directory Users and Computers Snap-In Console</H3>
       <ol>
