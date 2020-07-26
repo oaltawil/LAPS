@@ -17,15 +17,15 @@
 
 ### 1. Install LAPS on an Active Directory Domain Controller
 
-1.1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
+  1.1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
 
-1.2. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
+  1.2. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
 
-![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
+  ![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
 
-1.3. On Windows Server Core, using the following installation command:
+  1.3. On Windows Server Core, using the following installation command:
 
-    msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
+      msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
 ### 2. Prepare the Active Directory domain for LAPS
 
