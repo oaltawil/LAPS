@@ -10,8 +10,8 @@ The LAPS installer consists of the following 4 components or features:
     <li> Fat Client UI</li>
     <li> PowerShell module</li>
     <li> GPO Editor templates</li>
-    Please note that by default only the "AdmPwd GPO extension" is installed.
   </ol>
+  Please note that by default only the "AdmPwd GPO extension" is installed.
 </p>
 <p>
   <ol>
@@ -19,11 +19,11 @@ The LAPS installer consists of the following 4 components or features:
       <H3>Install LAPS on an Active Directory Domain Controller</H3>
       <ol>
         <li>Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template</li>
-        <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
+        <li>On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools" and select "Entire feature will be installed on local hard drive
           <p><img alt="Image" title="LAPS Product Features" src="LAPSInstallAllProductFeatures.png" /></p>
           <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
         </li>
-        <li>On Windows Server Core, using the following installation command: msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX</li>
+        <li>On Windows Server Core, using the following installation command: "msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX"</li>
       </ol>
     </li>
     <li>
@@ -55,7 +55,7 @@ The LAPS installer consists of the following 4 components or features:
   Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.
   <ol>
     <li>The LAPS Fat Client can be installed on any domain-joined server or workstation
-    <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFATClientUIFeature.png" /></p>
+    <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
     </li>
     <li>The Active Directory Users and Computers MMC (installed as part of the Remote Server Administration Tools for Active Directory Domain Services feature) can also be enabled on any domain-joined server or workstation.
     <ol>
