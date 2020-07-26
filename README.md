@@ -28,11 +28,11 @@
 
 ### 2. Prepare the Active Directory domain for LAPS
 
-  2.1.Schedule a Maintenance Window
+  2.1. Schedule a Maintenance Window
   
-  2.2.Take a System State Backup of the Domain Controller
+  2.2. Take a System State Backup of the Domain Controller
   
-  2.3.Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
+  2.3. Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
   
     a. Extend the Active Directory schema
     
