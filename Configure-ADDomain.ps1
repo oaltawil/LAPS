@@ -47,15 +47,16 @@ Import-Module ActiveDirectory
  1. ms-Mcs-AdmPwd – Stores the password in clear text
  2. ms-Mcs-AdmPwdExpirationTime – Stores the time to reset the password
 #>
+Write-Host "Updating the Active Directory schema"
 Update-AdmPwdADSchema
 
-# Grant the computer (SELF) account the write permissions required to update the password and expiration timestamp of its own managed local Administrator password
+Write-Host "`n`nGranting the computer (SELF) account the permissions to update the password and expiration timestamp of its own managed local Administrator password"
 $OrgUnits | ForEach-Object {Set-AdmPwdComputerSelfPermission -OrgUnit $_}
 
-# Grant users and groups the permission to read the passwords
+Write-Host "`n`nGranting specific users and groups the ability to read the local Administrator passwords"
 $OrgUnits | ForEach-Object {Set-AdmPwdReadPasswordPermission -OrgUnit $_ -AllowedPrincipals $AllowedPrincipals}
 
-# Grant users and groups the permision to force a password reset
+Write-Host "`n`nGranting specific users and groups the ability to reset the local Administrator passwords"
 $OrgUnits | ForEach-Object {Set-AdmPwdResetPasswordPermission -OrgUnit $_ -AllowedPrincipals $AllowedPrincipals}
 
 # Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain)
@@ -64,6 +65,8 @@ $GroupPolicyCentralStore = "\\$ADDomain\SYSVOL\$ADDomain\Policies\PolicyDefiniti
 
 if (Test-Path $GroupPolicyCentralStore)
 {
+Write-Host "`n`nCopying the LAPS Administrative Template files to the Group Policy Central store"
+
     Copy-Item -Path "C:\Windows\PolicyDefinitions\AdmPwd.admx" -Destination (Join-Path -Path $GroupPolicyCentralStore -ChildPath "AdmPwd.admx" -Force)
     Copy-Item -Path "C:\Windows\PolicyDefinitions\en-US\AdmPwd.adml" -Destination (Join-Path -Path $GroupPolicyCentralStore -ChildPath "en-US" -AdditionalChildPath "AdmPwd.adml" -Force)
 }
