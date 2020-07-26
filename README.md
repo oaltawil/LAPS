@@ -43,7 +43,13 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
       </ol>
     </li>
     <li><H3>Configure the LAPS Group Policy settings</H3>
-      On the same domain controller where LAPS is installed, or if the domain is configured with a Group Policy Central Store, on any domain-joined server or workstation with the Remote Server Administration Tools Group Policy Management Tools feature enabled, create a new Group Policy Object or edit an existing one. The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management". Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script.
+    <ol>
+      <li>If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled</li>
+      <li>If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed</li>
+      <li>Using the "Group Policy Management Console", create a new Group Policy Object or edit an existing one</li>
+      <li>The minimum required setting to enable LAPS is "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"</li>
+      <li>Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script</li>
+    </ol>
     </li>
     <li><H3>Install the LAPS Client-Side Extension on all managed computers</H3>
     Use Group Policy Software Installation or an Endpoint Configuration/Management Product, such as Microsoft Endpoint Manager, to silently install the LAPS Windows Installer package to all computers: msiexec.exe /i LAPS.x64.msi /q
@@ -54,15 +60,15 @@ Membership in the "Schema Admins" and "Domain Admins" security groups are requir
   <H2>Retrieving the local Administrator password for a given Computer</H2>
   <p>Your user account or a group that you are a member of must have been specified as an "AllowedPrincipal" when running the "Configure-ADDomain.ps1" PowerShell script.</p>
   <ol>
-    <li>The LAPS UI Fat Client can be installed on any domain-joined server or workstation:
+    <li>The "LAPS UI" fat client application can be installed on any domain-joined server or workstation:
     <p><img alt="Image" title="LAPS FAT Client UI Feature" src="LAPSFatClientUIFeature.png" /></p>
     Once installed, the "LAPS UI" application can be used to read and reset passwords:
     <p><img alt="Image" title="LAPS FAT Client" src="LAPSFatClient.png" /></p>
     </li>
-    <li>The Active Directory Users and Computers snap-in console can be installed by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation.
+    <li>The "Active Directory Users and Computers" snap-in console can be installed by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation.
       <p>
         <ol>
-          <li>Launch the Active Directory Users and Computers snap-in console"</li>
+          <li>Launch the "Active Directory Users and Computers" snap-in console</li>
           <li>Click on the "View" menu and select "Advanced Features"</li>
           <li>Right-click the Computer object and select "Properties"</li>
           <li>Click on the "Attributes Editor" tab, and read the value for the "ms-Mcs-AdmPwd" attribute
