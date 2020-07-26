@@ -7,9 +7,9 @@ Membership in the "Schema Admins" and "Domain Admins" security groups is require
   The LAPS installer consists of the following 4 components or features:
   <ol>
     <li> AdmPwd GPO Extension</li>
-    <li> Fat Client UI</li>
-    <li> PowerShell module</li>
-    <li> GPO Editor templates</li>
+    <li> Management Tools\Fat Client UI</li>
+    <li> Management Tools\PowerShell module</li>
+    <li> Management Tools\GPO Editor templates</li>
   </ol>
   <p><img alt="Image" title="LAPS Product Features" src="LAPSProductFeatures.png" /></p>
   Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
