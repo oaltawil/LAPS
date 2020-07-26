@@ -1,6 +1,6 @@
 # Guide to implementing and using the Local Administrator Password Solution (LAPS)
 
-## Deploying the Local Administrator Password Solution (LAPS)
+## Deploying LAPS
 
   Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the "Configure-ADDomain.ps1" PowerShell script).
 
@@ -17,15 +17,15 @@
 
 ### 1. Install LAPS on an Active Directory Domain Controller
 
-  1.1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
-  
-  1.2. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
+1.1. Install all product features of LAPS, including the FAT client, AdmPwd.PS PowerShell module, and Group Policy Administrative Template
 
-  ![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
-  
-  1.3. On Windows Server Core, using the following installation command:
+1.2. On Windows Server with Desktop Experience, double-click the "LAPS.x64.msi" installer package and in the "Custom Setup" page, click on the drop-down arrow beside "Management Tools", and select "Entire feature will be installed on local hard drive
 
-    msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
+![LAPS Install All Product Features](/images/LAPSInstallAllProductFeatures.png)
+
+1.3. On Windows Server Core, using the following installation command:
+
+  msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
 ### 2. Prepare the Active Directory domain for LAPS
 
@@ -37,21 +37,21 @@
 
 2.3.1. Extend the Active Directory schema by running the following cmdlet:
 
-      **Update-AdmPwdADSchema**
+  **Update-AdmPwd*ADSchema***
 
 2.3.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
 
-      **Set-AdmPwdComputerSelfPermission** -OrgUnit "Names of the OUs to delegate permissions"
+  **Set-AdmPwd*ComputerSelf*Permission** -OrgUnit "Names of the OUs to delegate permissions"
 
 2.3.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
-      **Set-AdmPwdReadPasswordPermission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+  **Set-AdmPwd*ReadPassword*Permission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
-      **Set-AdmPwdResetPasswordPermission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+  **Set-AdmPwd*ResetPassword*Permission** -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
 2.3.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
-Type the following command to obtain more information about how to run the script:
+Type the following command for help with running the script:
 
 #### Get-Help .\Configure-ADDomain.ps1 -Full</p>
 
@@ -64,6 +64,7 @@ Type the following command to obtain more information about how to run the scrip
 3.3. Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
 
 3.4. In the "Group Policy Management Editor", enable the following Group Policy setting:
+  
   "Computer Configuration" -> "Policies" -> "Administrative Templates" -> "LAPS" -> "Enable local admin password management"
 
 3.5. Link the Group Policy Object to the Organizational Units specified when running the Configure-ADDomain.ps1 PowerShell script
@@ -86,8 +87,9 @@ The "LAPS UI" application can be used to read and reset local Administrator pass
 
 The following cmdlets in the LAPS PowerShell module (AdmPwd.PS) can be used to read and reset local Administrator passwords:
 
-Get-AdmPwdPassword "myServer"
-Reset-AdmPwdPassword "myServer"
+Get-AdmPwdPassword "ComputerName"
+
+Reset-AdmPwdPassword "ComputerName"
 
 ![LAPS PowerShell Cmdlets](/images/LAPSPowerShellCmdlets.png)
 
