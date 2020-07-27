@@ -39,9 +39,9 @@ If any user accounts or group accounts should not have access to local Administr
 
 ![Remove All extended rights permission](/images/AllExtendedRightsPermission.png)
 
-2.1. Schedule a Maintenance Window
+2.2. Schedule a Maintenance Window
 
-2.2. Take a System State Backup of the Domain Controller
+2.3. Take a System State Backup of the Domain Controller
 
 2.4. Run the following PowerShell cmdlet script "Configure-ADDomain.ps1" to perform the following:
 
