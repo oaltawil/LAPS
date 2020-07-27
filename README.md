@@ -31,15 +31,17 @@ Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Polic
 
 ### 2. Prepare the Active Directory domain for LAPS
 
-2.1. Schedule a Maintenance Window
-
-2.2. Take a System State Backup of the Domain Controller
-
-2.3 Find all user and group accounts with the Extended_Rights permission on computer objects:
+2.1 Discover all user accounts and group accounts with the "All extended rights" permission on all the OUs containing computer objects that will be managed by LAPS
 
     Find-AdmPwdExtendedrights -Identity "Name or Distinguished Name of OU to search for permissions"
 
-If any user accounts or group accounts should not have access to local Administrator passwords, the "All extended rights" permission for these accounts should be removed from the OU.
+If any user accounts or group accounts should not have access to local Administrator passwords, the "All extended rights" permission for these accounts should be removed from the OUs.
+
+![Remove All extended rights permission](/images/AllExtendedRightsPermission.png)
+
+2.1. Schedule a Maintenance Window
+
+2.2. Take a System State Backup of the Domain Controller
 
 2.4. Run the following PowerShell cmdlet script "Configure-ADDomain.ps1" to perform the following:
 
