@@ -2,7 +2,7 @@
 
 ## Deploying LAPS
 
-Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller).
+Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, the first two steps in this guide should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller).
 
 Download the "LAPS.x64.msi" Windows Installer package from [LAPS Download Page](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
 
@@ -59,7 +59,7 @@ Type the following command for help with running the script:
 
 3.1. Use any domain-joined server or workstation and enable the Remote Server Administration Tools Group Policy Management Console feature: [Remote Server Administration Tools for Windows Operating Systems](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
-3.2. If the Group Policy Central Store is not configured for the domain, use any domain-joined server or workstation and install the LAPS "Management Tools\GPO Editor templates" product feature to install the LAPS Administrative Template files locally
+3.2. If the Group Policy Central Store is not configured for the domain, install the LAPS "GPO Editor templates" product feature to install the LAPS Administrative Template files locally
 
 3.3. Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
 
