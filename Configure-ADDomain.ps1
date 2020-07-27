@@ -20,6 +20,9 @@
     Use the following format for users and groups: "<DomainName>\<User or Group Name>""
 #>
 
+#Requires -Modules "AdmPwd.PS"
+#Requires -RunAsAdministrator
+
 [CmdletBinding()]
 param (
     [Parameter(Mandatory=$true)]
@@ -30,7 +33,6 @@ param (
     [ValidateNotNullOrEmpty()]
     [string[]]
     $AllowedPrincipals
-
 )
 
 ##########################
