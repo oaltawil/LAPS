@@ -43,7 +43,7 @@ If any user accounts or group accounts should not have access to local Administr
 
 2.3. Take a System State Backup of the Domain Controller
 
-2.4. Run the following PowerShell cmdlet script "Configure-ADDomain.ps1" to perform the following:
+2.4. Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
 
 2.4.1. Extend the Active Directory schema by running the following cmdlet:
 
@@ -53,17 +53,17 @@ If any user accounts or group accounts should not have access to local Administr
 
     Set-AdmPwdComputerSelfPermission -Identity "Name or Distinguished Name of OU (in case of duplicate names) to delegate permissions"
 
-The "Set-AdmPwdComputerSelfPermission" cmdlet assigns the Computer (SELF) account the "Write ms-Mcs-AdmPwd" permission on the computer objects under the specified OU
+The above cmdlet assigns the Computer (SELF) account the "Write ms-Mcs-AdmPwd" permission on the computer objects under the specified OU
 
 2.4.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
     Set-AdmPwdReadPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
-The "Set-AdmPwdReadPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwd" permission on the computer objects under the specified OU to the allowed users and groups
+The above cmdlet assigns the "Read ms-Mcs-AdmPwd" permission on the computer objects under the specified OU to the allowed users and groups
 
     Set-AdmPwdResetPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
-The "Set-AdmPwdResetPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwdExpirationTime" and "Write ms-McsAdmPwdExpirationTime" permissions on the computer objects under the specified OU to the allowed users and groups
+The previous cmdlet assigns the "Read ms-Mcs-AdmPwdExpirationTime" and "Write ms-McsAdmPwdExpirationTime" permissions on the computer objects under the specified OU to the allowed users and groups
 
 2.4.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
