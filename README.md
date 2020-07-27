@@ -39,7 +39,7 @@ Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Polic
 
     Find-AdmPwdExtendedrights -Identity "Name or Distinguished Name of OU to search for permissions"
 
-If any user or group accounts should not have access to local Administrator passwords, their Extended_Rights privilege should be removed from these OU's.
+If any user accounts or group accounts should not have access to local Administrator passwords, the "All extended rights" permission for these accounts should be removed from the OU.
 
 2.4. Run the following PowerShell cmdlet script "Configure-ADDomain.ps1" to perform the following:
 
