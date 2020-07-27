@@ -49,13 +49,19 @@ If any user or group accounts should not have access to local Administrator pass
 
 2.4.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
 
-    Set-AdmPwdComputerSelfPermission -Identity "Name or Distinguished Name of OU (in case of duplicate names) to delegate permissions"   
+    Set-AdmPwdComputerSelfPermission -Identity "Name or Distinguished Name of OU (in case of duplicate names) to delegate permissions"
+
+The "Set-AdmPwdComputerSelfPermission" cmdlet assigns the Computer (SELF) account the "Write ms-Mcs-AdmPwd" permission on the computer objects under the specified OU
 
 2.4.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
     Set-AdmPwdReadPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
+The "Set-AdmPwdReadPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwd" permission on the computer objects under the specified OU to the allowed users and groups
+
     Set-AdmPwdResetPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+
+The "Set-AdmPwdResetPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwdExpirationTime" and "Write ms-McsAdmPwdExpirationTime" permissions on the computer objects under the specified OU to the allowed users and groups
 
 2.4.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
