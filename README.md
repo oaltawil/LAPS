@@ -2,18 +2,18 @@
 
 ## Deploying LAPS
 
-  Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the "Configure-ADDomain.ps1" PowerShell script).
+Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller).
 
-  Download the "LAPS.x64.msi" Windows Installer package from [link to LAPS Download Page!](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
+Download the "LAPS.x64.msi" Windows Installer package from [link to LAPS Download Page!](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
 
-  1. AdmPwd GPO Extension
-  2. Management Tools\Fat Client UI
-  3. Management Tools\PowerShell module
-  4. Management Tools\GPO Editor templates
+1. AdmPwd GPO Extension
+2. Management Tools\Fat Client UI
+3. Management Tools\PowerShell module
+4. Management Tools\GPO Editor templates
 
-  ![LAPS Product Features](/images/LAPSProductFeatures.png)
+![LAPS Product Features](/images/LAPSProductFeatures.png)
   
-  Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
+Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
 
 ### 1. Install LAPS on an Active Directory Domain Controller
 
