@@ -57,9 +57,11 @@ Type the following command for help with running the script:
 
 ### 3. Configure the LAPS Group Policy settings
 
-3.1. If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled
+3.1. Use any domain-joined server or workstation and enable the Remote Server Administration Tools Group Policy Management Console feature
 
-3.2. If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed
+[link to Remote Server Administration Tools for Windows operating systems!](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
+
+3.2. If the Group Policy Central Store is not configured for the domain, use any domain-joined server or workstation and install the LAPS "Management Tools\GPO Editor templates" product feature to install the LAPS Administrative Template files locally
 
 3.3. Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
 
@@ -99,7 +101,9 @@ Get-Command -Module AdmPwd.PS
 
 ### 3. Active Directory Users and Computers Snap-In Console
 
-3.1. Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation
+3.1. Install the "Active Directory Users and Computers" snap-in console by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation
+
+[link to Remote Server Administration Tools for Windows operating systems!](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
 3.2. Launch the "Active Directory Users and Computers" snap-in console
 
