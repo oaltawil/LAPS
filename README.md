@@ -4,7 +4,7 @@
 
 Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller).
 
-Download the "LAPS.x64.msi" Windows Installer package from [link to LAPS Download Page!](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
+Download the "LAPS.x64.msi" Windows Installer package from [LAPS Download Page](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
 
 1. AdmPwd GPO Extension
 2. Management Tools\Fat Client UI
@@ -59,7 +59,7 @@ Type the following command for help with running the script:
 
 3.1. Use any domain-joined server or workstation and enable the Remote Server Administration Tools Group Policy Management Console feature
 
-[link to Remote Server Administration Tools for Windows operating systems!](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
+[Remote Server Administration Tools for Windows Operating Systems](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
 3.2. If the Group Policy Central Store is not configured for the domain, use any domain-joined server or workstation and install the LAPS "Management Tools\GPO Editor templates" product feature to install the LAPS Administrative Template files locally
 
@@ -102,8 +102,6 @@ Get-Command -Module AdmPwd.PS
 ### 3. Active Directory Users and Computers Snap-In Console
 
 3.1. Install the "Active Directory Users and Computers" snap-in console by enabling the Remote Server Administration Tools for Active Directory Domain Services feature on any domain-joined server or workstation
-
-[link to Remote Server Administration Tools for Windows operating systems!](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
 3.2. Launch the "Active Directory Users and Computers" snap-in console
 
