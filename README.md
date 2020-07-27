@@ -2,18 +2,18 @@
 
 ## Deploying LAPS
 
-  Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, all the instructions below should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller), with the Remote Server Administration Tools for Active Directory Domain Services Installed (the Active Directory PowerShell module is required by the "Configure-ADDomain.ps1" PowerShell script).
+Membership in the "Schema Admins" and "Domain Admins" security groups is required to configure the Active Directory domain for LAPS.  To avoid pash-the-hash attacks, members of priviliged Active Directory groups should only logon to domain controllers and not to down-level member servers.  Therefore, the first two steps in this guide should be carried out on a writeable Domain Controller, not an RODC (Read-Only Domain Controller).
 
-  Download the "LAPS.x64.msi" Windows Installer package from [link to LAPS Download Page!](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
+Download the "LAPS.x64.msi" Windows Installer package from [LAPS Download Page](https://www.microsoft.com/en-us/download/details.aspx?id=46899). The LAPS installer consists of the following 4 components or features:
 
-  1. AdmPwd GPO Extension
-  2. Management Tools\Fat Client UI
-  3. Management Tools\PowerShell module
-  4. Management Tools\GPO Editor templates
+1. AdmPwd GPO Extension
+2. Management Tools\Fat Client UI
+3. Management Tools\PowerShell module
+4. Management Tools\GPO Editor templates
 
-  ![LAPS Product Features](/images/LAPSProductFeatures.png)
+![LAPS Product Features](/images/LAPSProductFeatures.png)
   
-  Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
+Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Policy Client-Side Extension CSE) is installed.
 
 ### 1. Install LAPS on an Active Directory Domain Controller
 
@@ -27,29 +27,45 @@
 
     msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
+1.4 In addition to the domain controller, desktop managers and password administrators should also install all product features of LAPS on their administrative workstations as they'll need the LAPS Management Tools to manage local Administrator passwords.
+
 ### 2. Prepare the Active Directory domain for LAPS
+
+2.1 Discover all user accounts and group accounts with the "All extended rights" permission on all the OUs containing computer objects that will be managed by LAPS
+
+    Find-AdmPwdExtendedrights -Identity "Name or Distinguished Name of OU to search for permissions"
+
+If any user accounts or group accounts should not have access to local Administrator passwords, the "All extended rights" permission for these accounts should be removed from the OUs.
+
+![Remove All extended rights permission](/images/AllExtendedRightsPermission.png)
 
 2.1. Schedule a Maintenance Window
 
 2.2. Take a System State Backup of the Domain Controller
 
-2.3. Run the PowerShell script "Configure-ADDomain.ps1" to perform the following:
+2.4. Run the following PowerShell cmdlet script "Configure-ADDomain.ps1" to perform the following:
 
-2.3.1. Extend the Active Directory schema by running the following cmdlet:
+2.4.1. Extend the Active Directory schema by running the following cmdlet:
 
     Update-AdmPwdADSchema
 
-2.3.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
+2.4.2. Grant Computers the ability to store the local Administrator password and password expiration time in Active Directory by running the following cmdlet:
 
-    Set-AdmPwdComputerSelfPermission -OrgUnit "Names of the OUs to delegate permissions"
+    Set-AdmPwdComputerSelfPermission -Identity "Name or Distinguished Name of OU (in case of duplicate names) to delegate permissions"
 
-2.3.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
+The "Set-AdmPwdComputerSelfPermission" cmdlet assigns the Computer (SELF) account the "Write ms-Mcs-AdmPwd" permission on the computer objects under the specified OU
 
-    Set-AdmPwdReadPasswordPermission -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+2.4.3. Grant Users and Groups the ability to view and reset the local Administrator passwords stored in Active Directory by running the following two cmdlets, respectively:
 
-    Set-AdmPwdResetPasswordPermission -OrgUnit "Names of the OUs to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+    Set-AdmPwdReadPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
 
-2.3.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
+The "Set-AdmPwdReadPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwd" permission on the computer objects under the specified OU to the allowed users and groups
+
+    Set-AdmPwdResetPasswordPermission -Identity "Name or Distinguished Name of the OU to delegate permissions" -AllowedPrincipals "Users and/or Groups"
+
+The "Set-AdmPwdResetPasswordPermission" cmdlet assigns the "Read ms-Mcs-AdmPwdExpirationTime" and "Write ms-McsAdmPwdExpirationTime" permissions on the computer objects under the specified OU to the allowed users and groups
+
+2.4.4. Copy the LAPS Administrative Template files to the Group Policy Central store (if configured for the domain).
 
 Type the following command for help with running the script:
 
@@ -57,9 +73,9 @@ Type the following command for help with running the script:
 
 ### 3. Configure the LAPS Group Policy settings
 
-3.1. If the Group Policy Central Store is configured for the domain, use any domain-joined server or workstation with the "Remote Server Administration Tools" "Group Policy Management Tools" feature enabled
+3.1. Use any domain-joined server or workstation and enable the Remote Server Administration Tools Group Policy Management Console feature: [Remote Server Administration Tools for Windows Operating Systems](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
-3.2. If the Group Policy Central Store is not configured for the domain, use the same Domain Controller where LAPS is installed
+3.2. If the Group Policy Central Store is not configured for the domain, install the LAPS "GPO Editor templates" product feature to install the LAPS Administrative Template files locally
 
 3.3. Using the "Group Policy Management Console", create and edit a new Group Policy Object or edit an existing one
 
@@ -99,7 +115,7 @@ Get-Command -Module AdmPwd.PS
 
 ### 3. Active Directory Users and Computers Snap-In Console
 
-3.1. Install the "Active Directory Users and Computers" snap-in console by enabling the "Remote Server Administration Tools" for "Active Directory Domain Services" feature on any domain-joined server or workstation
+3.1. Use any domain-joined server or workstation and install the "Active Directory Users and Computers" snap-in console by enabling the Remote Server Administration Tools for Active Directory Domain Services feature: [Remote Server Administration Tools for Windows Operating Systems](https://support.microsoft.com/en-us/help/2693643/remote-server-administration-tools-rsat-for-windows-operating-systems)
 
 3.2. Launch the "Active Directory Users and Computers" snap-in console
 
