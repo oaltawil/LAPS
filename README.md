@@ -27,6 +27,8 @@ Please note that by default only the "AdmPwd GPO extension" (or LAPS Group Polic
 
     msiexec.exe /i LAPS.x64.msi /q ADDLOCAL=CSE,Management.UI,Management.PS,Management.ADMX
 
+1.4 In addition to the domain controller, desktop managers and password administrators should also install all product features of LAPS on their administrative workstations as they'll need the LAPS Management Tools to manage local Administrator passwords.
+
 ### 2. Prepare the Active Directory domain for LAPS
 
 2.1. Schedule a Maintenance Window
